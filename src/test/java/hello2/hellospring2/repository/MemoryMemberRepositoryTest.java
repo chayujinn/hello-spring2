@@ -13,8 +13,9 @@ class MemoryMemberRepositoryTest {
 
     MemoryMemberRepository repository = new MemoryMemberRepository();
 
-    @AfterEach// Test 하나 끝날때마다 clear됨
+    @AfterEach// Test 하나씩 끝날때마다 clear됨
     public void afterEach(){
+
         repository.clearStore();
     }
     @Test
@@ -25,7 +26,7 @@ class MemoryMemberRepositoryTest {
     repository.save(member);
 
     Member result = repository.findById(member.getId()).get();
-        assertThat(member).isEqualTo(result);
+        assertThat(member).isEqualTo(result); //result값이랑 member값이랑 같은지 테스트 하는것
     }
 
     @Test
@@ -38,7 +39,7 @@ class MemoryMemberRepositoryTest {
         member2.setName("spring2");
         repository.save(member2);
 
-        Member result = repository.findByName("spring1").get();
+        Member result = repository.findByName("spring1").get();//get()이게 꺼낸다는 의미
 
         assertThat(result).isEqualTo(member1);
     }

@@ -1,7 +1,7 @@
 package hello2.hellospring2.domain;
 
 public class Member {
-    private Long id;
+    private Long id;//시스템에 저장하는 아이디 고객아이디 아님
     private String name;
 
     public Long getId() {

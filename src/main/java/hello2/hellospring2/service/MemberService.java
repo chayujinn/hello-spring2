@@ -7,25 +7,26 @@ import hello2.hellospring2.repository.MemoryMemberRepository;
 import java.util.List;
 import java.util.Optional;
 
-public class MemberService {
+public class MemberService {            //간단하게 테스트 하는 방법 단축키:shift+Ctrl+T
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
 
-    /**
-     *회원가입dddd
-     */
+    public MemberService(MemberRepository memberRepository) {//alter+insert 생성자 만들어줌
+        this.memberRepository = memberRepository;
+    }
+
+    /**회원가입**/
         public Long join(Member member) {
             //같은 이름이 있는 중복회원X
             validateEuplicateMember(member);//중복회원 검증
-
-            memberRepository.save(member);
+             memberRepository.save(member);//통과하면 저장
             return member.getId();
         }
 
     private void validateEuplicateMember(Member member) {
         memberRepository.findByName(member.getName())//단축키 ctrl + alt + v 변수추출
             .ifPresent(m -> {
-                throw new IllegalStateException("이미 존재하는 회원입니다."); //메소드 만들기 ctrl+alt+shift+T한 후,method 검색
+                throw new IllegalStateException("이미 존재하는 회원입니다."); //메소드 만들기 ctrl+alt+shift+T한 후,Extract Method 검색
         });
     }
 
