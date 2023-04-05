@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"><!--타임리프-->
+<body>
+<div class="container">
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>이름</th>
+            </tr>
+            </thead>
+            <tbody><!--템플릿 언어가 렌더링(서버로부터 HTML파일을 받아 브라우저에 뿌려주는 과정) 한것 -->
+            <tr th:each="member : ${members}"><!--${}Model안에 있는 값을 꺼내는 것/ 자바 for each 문법이랑 비슷-->
+                <td th:text="${member.id}"></td>
+                <td th:text="${member.name}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div> <!-- /container -->
+</body>
+</html>
+
+<!--
+thymeleaf는 template Engine 중 하나로 스프링부트에서는 JSP(Java Server Page)가 아닌 타임리프 사용을 권장
+템플릿 엔진이란 HTML(Markup)과 데이터를 결합한 결과물을 만들어 주는 도구
+
+*****th:each = 자바의 for each와 유사*****
+String[] numbers = {"one", "two", "three"};
+for(int i=0; i<numbers.length; i++) {
+    System.out.println(numbers[i]);
+}
+
+String[] numbers = {"one", "two", "three"};
+for(String number: numbers) {
+    System.out.println(number);
+}
+
+
+-->

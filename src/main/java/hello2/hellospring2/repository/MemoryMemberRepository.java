@@ -1,8 +1,10 @@
 package hello2.hellospring2.repository;
 
 import hello2.hellospring2.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
+
 
 public class MemoryMemberRepository implements MemberRepository{ //implements methods 눌러서 전부 다 선택하면 오버라이드 자동
 
